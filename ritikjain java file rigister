@@ -13,7 +13,7 @@ import android.widget.TextView;
 import kotlin.text.UStringsKt;
 public class register extends AppCompatActivity {
 
-    public static final String TAG = "TAG";
+    public static final String TAG = ("TAG");
     EditText mFullname, mEmail, mpersonalnumber, mPassword, mgender, mDob, maddress;
     Button mRegister;
     TextView mlogin;
@@ -26,7 +26,7 @@ public class register extends AppCompatActivity {
         mFullname = findViewById(R.id.fullname);
         mEmail = findViewById(R.id.email);
         mpersonalnumber = findViewById(R.id.personalnumber);
-        mPassword = findViewById(R.id.Password);
+        mPassword = findViewById(R.id.password);
         mgender = findViewById(R.id.gender);
         mDob = findViewById(R.id.Dob);
         maddress = findViewById(R.id.address);
@@ -35,7 +35,7 @@ public class register extends AppCompatActivity {
         mlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplication()login.class));
+                startActivity(new Intent(getApplication(), login.class));
             }
 
 
@@ -57,14 +57,15 @@ public class register extends AppCompatActivity {
                 if (TextUtils.isEmpty(password)) {
                     mPassword.setError("password is required");
                     return;
-
-                    if (password.length()< 6){
-                        mPassword.setError("Password must be >= 6 character");
-                        return;
-                    }
-
-
                 }
-            };
+
+                if (password.length() < 6) {
+                    mPassword.setError("Password must be >= 6 character");
+                    return;
+                }
+            }
+
+            ;
         });
     }
+}
